@@ -1,0 +1,7 @@
+div.item {
+	padding: 35px;
+    background: #fff;
+    margin-bottom: 35px;
+    position: relative;
+    overflow: hidden;
+}

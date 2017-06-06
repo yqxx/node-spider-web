@@ -1,10 +1,21 @@
 extends ./includes/layout
+block head
+	link(rel="stylesheet", href="/index.css")
 block content
 	div.container
 		div.row
 			each item in items
-				div.col-md-12
-					a(href="/detail/#{item.source}/#{item.sid}")
-						img(src="#{item.img}", class="img-responsive")
-						p #{item.name}
-						p #{item.info}
+				div.col-md-8
+					div.item
+						a(href="/detail/#{item.source}/#{item.sid}")
+							h1 #{item.title}
+							div(style="height:400px;background:url(#{item.img}) no-repeat center center")
+							p #{item.info}
+							a.btn.btn-default(href="/detail/#{item.source}/#{item.sid}") 阅读全文
+				div.col-md-4
+					div.widget
+						p a
+					div.widget
+						p b
+					div.widget
+						p c

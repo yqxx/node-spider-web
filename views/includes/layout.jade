@@ -3,6 +3,32 @@ html
 	head
 	title #{title}
 	link(rel="stylesheet", href="/bootstrap/dist/css/bootstrap.min.css")
+	link(rel="stylesheet", href="/layout.css")
+	script(src="/jquery/dist/jquery.min.js")
+	script(src="/bootstrap/dist/js/bootstrap.min.js")
 	meta(name="viewport" content="width=device-width, initial-scale=1")
+	block head
 	body
+		header
+			.container
+				.row
+					.col-xs-12
+						h1 奇毅李的小爬虫
+		nav.navbar.navbar-default(role="navigation")
+			div.container-fluid
+				div.navbar-header
+					button(type="button", class="navbar-toggle", data-toggle="collapse", data-target="#example-navbar-collapse")
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a(class="navbar-brand", href="#")
+				div.collapse.navbar-collapse#example-navbar-collapse
+					ul.nav.navbar-nav
+						li.active
+							a(href="#") A
+						li
+							a(href="#") B
+						li
+							a(href="#") C
 		block content

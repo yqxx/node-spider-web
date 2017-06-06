@@ -1,0 +1,40 @@
+body {
+	background: #ebebeb;
+	color: #505050;
+	font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
+}
+
+a {
+	color: #505050;
+}
+
+a:focus, a:hover {
+    text-decoration: none
+}
+
+
+/* theme */
+header {
+	background: #295d72;
+	color: #fff;
+}
+
+.btn {
+    padding: 7px 14px;
+    border-radius: 2px
+}
+
+.btn-default {
+    border: 1px solid #295d72;
+    background: #295d72;
+    color: #fff;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out
+}
+
+.btn-default:hover {
+    border: 1px solid #303030;
+    background: #303030;
+    color: #fff
+}

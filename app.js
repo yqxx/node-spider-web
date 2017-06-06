@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.get('/', function(req, res) {
 	request('https://api.liyiqi.me/list', function(error, response, body) {
+		console.log(body)
 		res.render('index', {
 			title: 'test index',
 			items: JSON.parse(body)
@@ -19,9 +20,9 @@ app.get('/', function(req, res) {
 
 app.get('/detail/:source/:id', function(req, res) {
 	request('https://api.liyiqi.me/detail/' + req.params.source + '/' + req.params.id, function(error, response, body) {
-		res.render('index', {
+		res.render('detail', {
 			title: 'test index',
-			items: JSON.parse(body)
+			item: JSON.parse(body)
 		});
 	});
 });
