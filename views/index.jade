@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+	title #{title}
+	link(rel="stylesheet", href="/bootstrap/dist/css/bootstrap.min.css")
+	meta(name="viewport" content="width=device-width, initial-scale=1")
+	body
+		div.container
+			div.row
+				each item in items
+					div.col-md-12
+						a(href=#{item.href})
+							img(src=#{item.img})
+							p #{item.name}
+							p #{item.info}
