@@ -7,6 +7,7 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req, res) {
 	request('https://api.liyiqi.me/list', function(error, response, body) {
