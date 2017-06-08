@@ -1,0 +1,20 @@
+{
+  "name": "node-spider-web",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "yq <yq_xx@yahoo.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/yqxx/node-spider-web",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
