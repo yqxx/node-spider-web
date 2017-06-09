@@ -5,3 +5,33 @@ div.item {
     position: relative;
     overflow: hidden;
 }
+
+.pagination {
+    margin: 0 0 35px;
+    text-align: center;
+    display: block;
+}
+
+.pagination .page-number {
+    background: #295d72;
+    color: #fff;
+    margin: 0 3px;
+    display: inline-block;
+    line-height: 36px;
+    padding: 0 14px;
+    border-radius: 2px;
+}
+
+.pagination a {
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    background: #295d72;
+    border-radius: 2px;
+}
+
+.pagination a {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+}
