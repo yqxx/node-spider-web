@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var request = require('request');
+var util = require('./util');
 
 var app = express();
 var port = process.env.PORT || 3001;
@@ -17,7 +18,7 @@ app.get('/', function(req, res) {
 	var page = 1;
 	var offset = (page - 1) * size;
 	request(api_host + '/page?limit=' + size + '&offset=' + offset, function(error, response, body) {
-		var _items = JSON.parse(body);
+		var _items = readItem(body);
 		res.render('index', {
 			title: 'test index',
 			pageable: {
@@ -34,7 +35,7 @@ app.get('/page/:page', function(req, res) {
 	var page = parseInt(req.params.page);
 	var offset = (page - 1) * size;
 	request(api_host + '/page?limit=' + size + '&offset=' + offset, function(error, response, body) {
-		var _items = JSON.parse(body);
+		var _items = readItem(body);
 		res.render('index', {
 			pageable: {
 				page: page,
@@ -46,8 +47,6 @@ app.get('/page/:page', function(req, res) {
 	});
 });
 
-
-
 app.get('/detail/:source/:id', function(req, res) {
 	request('https://api.liyiqi.me/detail/' + req.params.source + '/' + req.params.id, function(error, response, body) {
 		console.log('detail pg.')
@@ -57,6 +56,24 @@ app.get('/detail/:source/:id', function(req, res) {
 		});
 	});
 });
+
+function readItem(body){
+	var items = [];
+	var rows = JSON.parse(body).rows;
+
+	rows.forEach(function(v) {
+		var _item = {
+        	title: v.title,
+        	source: v.source,
+        	sid: v.sid,
+        	info: v.info,
+        	img: v.img,
+        	createdAt: util.topicTime(new Date(v.createdAt).getTime())
+        }
+        items.push(_item);
+	});
+    return items;
+}
 
 app.listen(port);
 console.log('Express started on port ' + port);

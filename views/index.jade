@@ -5,13 +5,15 @@ block content
 	div.container
 		div.row
 			div.col-md-8
-				each item in items.rows
+				each item in items
 					div.item
 						a(href="/detail/#{item.source}/#{item.sid}")
-							h1 #{item.title}
+							h3!= item.title
+						p #{item.source} #{item.createdAt}
+						a(href="/detail/#{item.source}/#{item.sid}")
 							img(src="#{item.img}", style="width:100%")
-							p #{item.info}
-							a.btn.btn-default(href="/detail/#{item.source}/#{item.sid}") 阅读全文
+						p!= item.info
+						a.btn.btn-default(href="/detail/#{item.source}/#{item.sid}") 阅读全文
 				nav.pagination(role="navigation")
 					if(pageable.page > 1)
 						a(href="/page/#{pageable.page - 1}") <

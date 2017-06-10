@@ -60,3 +60,33 @@ header {
     height: 30px;
     line-height: 30px
 }
+
+.copyright {
+    background: #111;
+    font-size: 13px;
+    text-align: center;
+    color: #555;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 1px solid #303030
+}
+
+.copyright span {
+    margin: 0 .5em
+}
+
+.copyright a {
+    color: #555
+}
+
+::-moz-selection {
+    color: #fff;
+    background: #295d72;
+    text-shadow: none
+}
+
+::selection {
+    color: #fff;
+    background: #295d72;
+    text-shadow: none
+}
