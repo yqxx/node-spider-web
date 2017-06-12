@@ -14,13 +14,26 @@ app.use(express.static(path.join(__dirname, 'static')));
 var api_host = 'https://api.liyiqi.me';
 var size = 5;
 
+var sources = [];
+request(api_host + '/sources', function(error, response, body) {
+	sources = JSON.parse(body);
+});
+
 app.get('/', function(req, res) {
 	var page = 1;
 	var offset = (page - 1) * size;
-	request(api_host + '/page?limit=' + size + '&offset=' + offset, function(error, response, body) {
+	var url = api_host + '/page?limit=' + size + '&offset=' + offset;
+
+	if(req.query.source){
+		url += '&source=' + req.query.source;
+	}
+
+	request(url, function(error, response, body) {
 		var _items = readItem(body);
 		res.render('index', {
 			title: 'test index',
+			sources: sources,
+			source: req.query.source,
 			pageable: {
 				page: page,
 				size: size,
@@ -34,9 +47,18 @@ app.get('/', function(req, res) {
 app.get('/page/:page', function(req, res) {
 	var page = parseInt(req.params.page);
 	var offset = (page - 1) * size;
-	request(api_host + '/page?limit=' + size + '&offset=' + offset, function(error, response, body) {
+
+	var url = api_host + '/page?limit=' + size + '&offset=' + offset;
+
+	if(req.query.source){
+		url += '&source=' + req.query.source;
+	}
+
+	request(url, function(error, response, body) {
 		var _items = readItem(body);
 		res.render('index', {
+			sources: sources,
+			source: req.query.source,
 			pageable: {
 				page: page,
 				size: size,
@@ -54,6 +76,7 @@ app.get('/detail/:source/:id', function(req, res) {
 
 		res.render('detail', {
 			title: 'test detail',
+			sources: sources,
 			item: body
 		});
 	});

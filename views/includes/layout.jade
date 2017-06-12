@@ -27,10 +27,9 @@ html
 					ul.nav.navbar-nav
 						li
 							a(href="/") 首页
-						li
-							a(href="#") B
-						li
-							a(href="#") C
+						each source in sources
+							li
+								a(href="/?source=#{source.code}") #{source.name}
 		block content
 		div.copyright
 			div.container
