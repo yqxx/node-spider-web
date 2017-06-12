@@ -6,6 +6,10 @@ div.item {
     overflow: hidden;
 }
 
+p.meta {
+	color: #959595;
+}
+
 .pagination {
     margin: 0 0 35px;
     text-align: center;

@@ -1,3 +1,22 @@
 extends ./includes/layout
+block head
+	link(rel="stylesheet", href="/css/detail.css")
 block content
-	
+	div.container
+		div.row
+			div.col-md-8
+				h3.title!= item.title
+				p.meta #{item.source} #{item.createdAt}
+				each content in item.content
+					div.item
+						if (content.type === 'img')
+							img(src="#{content.value}")
+						else
+							p!= content.value
+			div.col-md-4
+				div.widget
+					p a
+				div.widget
+					p b
+				div.widget
+					p c

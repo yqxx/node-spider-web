@@ -49,20 +49,22 @@ app.get('/page/:page', function(req, res) {
 
 app.get('/detail/:source/:id', function(req, res) {
 	request('https://api.liyiqi.me/detail/' + req.params.source + '/' + req.params.id, function(error, response, body) {
-		console.log('detail pg.')
+		var body = JSON.parse(body);
+		body.content = JSON.parse(body.content);
+
 		res.render('detail', {
 			title: 'test detail',
-			item: JSON.parse(body)
+			item: body
 		});
 	});
 });
 
 function readItem(body){
-	var items = [];
-	var rows = JSON.parse(body).rows;
+	var rows = [];
+	var body = JSON.parse(body);
 
-	rows.forEach(function(v) {
-		var _item = {
+	body.rows.forEach(function(v) {
+		var row = {
         	title: v.title,
         	source: v.source,
         	sid: v.sid,
@@ -70,9 +72,10 @@ function readItem(body){
         	img: v.img,
         	createdAt: util.topicTime(new Date(v.createdAt).getTime())
         }
-        items.push(_item);
+        rows.push(row);
 	});
-    return items;
+	body.rows = rows;
+    return body;
 }
 
 app.listen(port);

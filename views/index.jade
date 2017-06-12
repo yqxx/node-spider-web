@@ -5,11 +5,11 @@ block content
 	div.container
 		div.row
 			div.col-md-8
-				each item in items
+				each item in items.rows
 					div.item
 						a(href="/detail/#{item.source}/#{item.sid}")
 							h3!= item.title
-						p #{item.source} #{item.createdAt}
+						p.meta #{item.source} #{item.createdAt}
 						a(href="/detail/#{item.source}/#{item.sid}")
 							img(src="#{item.img}", style="width:100%")
 						p!= item.info
