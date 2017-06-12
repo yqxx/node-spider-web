@@ -10,7 +10,7 @@ block content
 				each content in item.content
 					div.item
 						if (content.type === 'img')
-							img(src="#{content.value}")
+							img.lazy(data-original="#{content.value}")
 						else
 							p!= content.value
 			div.col-md-4

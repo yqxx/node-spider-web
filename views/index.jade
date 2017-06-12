@@ -11,7 +11,7 @@ block content
 							h3!= item.title
 						p.meta #{item.source} #{item.createdAt}
 						a(href="/detail/#{item.source}/#{item.sid}")
-							img(src="#{item.img}", style="width:100%")
+							img.lazy(data-original="#{item.img}", style="width:100%")
 						p!= item.info
 						a.btn.btn-default(href="/detail/#{item.source}/#{item.sid}") 阅读全文
 				nav.pagination(role="navigation")
