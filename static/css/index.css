@@ -7,7 +7,25 @@ div.item {
 }
 
 p.meta {
+    position: relative;
 	color: #959595;
+    font-size: 10px;
+}
+
+p.meta img{
+    width: 25px;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}
+
+p.meta span{
+    margin: 0 2px;
+}
+
+p.info{
+    margin-top: 5px;
+    color: #959595;
 }
 
 .pagination {

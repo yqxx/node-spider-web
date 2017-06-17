@@ -27,13 +27,13 @@ app.get('/', function(req, res) {
 	if(req.query.source){
 		url += '&source=' + req.query.source;
 	}
-
+	
 	request(url, function(error, response, body) {
 		var _items = readItem(body);
 		res.render('index', {
 			title: 'test index',
 			sources: sources,
-			source: req.query.source,
+			source: readSource(req.query.source),
 			pageable: {
 				page: page,
 				size: size,
@@ -58,7 +58,7 @@ app.get('/page/:page', function(req, res) {
 		var _items = readItem(body);
 		res.render('index', {
 			sources: sources,
-			source: req.query.source,
+			source: readSource(req.query.source),
 			pageable: {
 				page: page,
 				size: size,
@@ -89,7 +89,7 @@ function readItem(body){
 	body.rows.forEach(function(v) {
 		var row = {
         	title: v.title,
-        	source: v.source,
+        	source: readSource(v.source),
         	sid: v.sid,
         	info: v.info,
         	img: v.img,
@@ -99,6 +99,17 @@ function readItem(body){
 	});
 	body.rows = rows;
     return body;
+}
+
+function readSource(code) {
+	var source;
+	sources.forEach(function(v) {
+		if (v.code === code){
+			source = v;
+			return;
+		}
+	})
+	return source;
 }
 
 app.listen(port);
