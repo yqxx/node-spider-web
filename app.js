@@ -31,7 +31,6 @@ app.get('/', function(req, res) {
 	request(url, function(error, response, body) {
 		var _items = readItem(body);
 		res.render('index', {
-			title: 'test index',
 			sources: sources,
 			source: readSource(req.query.source),
 			pageable: {
@@ -76,7 +75,6 @@ app.get('/detail/:source/:id', function(req, res) {
 		body.source = readSource(body.source);
 
 		res.render('detail', {
-			title: 'test detail',
 			sources: sources,
 			item: body
 		});

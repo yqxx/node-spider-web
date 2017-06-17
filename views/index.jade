@@ -4,7 +4,7 @@ block head
 block content
 	each item in items.rows
 		div.item
-			a(href="/detail/#{item.source.code}/#{item.sid}")
+			a(href="/detail/#{item.source.code}/#{item.sid}", title!= item.title)
 				h4!= item.title
 			p.meta
 				img(src="#{item.source.icon}").img-responsive
@@ -13,7 +13,7 @@ block content
 			a(href="/detail/#{item.source.code}/#{item.sid}")
 				img.lazy(data-original="#{item.img}", style="width:100%")
 			p.info!= item.info
-			a.btn.btn-default(href="/detail/#{item.source.code}/#{item.sid}") 阅读全文
+			a.btn.btn-default(href="/detail/#{item.source.code}/#{item.sid}", title!= item.title) 阅读全文
 	nav.pagination(role="navigation")
 		if(pageable.page > 1)
 			if (source)
