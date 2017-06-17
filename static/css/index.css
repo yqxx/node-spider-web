@@ -13,10 +13,9 @@ p.meta {
 }
 
 p.meta img{
-    width: 25px;
+    width: 15px;
     position: absolute;
     right: 0;
-    bottom: 5px;
 }
 
 p.meta span{

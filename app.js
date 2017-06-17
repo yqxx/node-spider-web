@@ -73,6 +73,7 @@ app.get('/detail/:source/:id', function(req, res) {
 	request('https://api.liyiqi.me/detail/' + req.params.source + '/' + req.params.id, function(error, response, body) {
 		var body = JSON.parse(body);
 		body.content = JSON.parse(body.content);
+		body.source = readSource(body.source);
 
 		res.render('detail', {
 			title: 'test detail',

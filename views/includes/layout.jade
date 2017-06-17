@@ -37,7 +37,20 @@ html
 						each source in sources
 							li
 								a(href="/?source=#{source.code}") #{source.name}
-		block content
+						li
+							a(href="/") ...
+		div.container
+			div.row
+				div.col-md-8
+					block content
+				div.col-md-4
+					p 不要<b style="color:#295d72;">担心</b>，这里我打算放广告
+					div.widget
+						p a
+					div.widget
+						p b
+					div.widget
+						p c
 		div.copyright
 			div.container
 				div.row

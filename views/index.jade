@@ -2,37 +2,28 @@ extends ./includes/layout
 block head
 	link(rel="stylesheet", href="/css/index.css")
 block content
-	div.container
-		div.row
-			div.col-md-8
-				each item in items.rows
-					div.item
-						a(href="/detail/#{item.source.code}/#{item.sid}")
-							h3!= item.title
-						p.meta
-							img(src="#{item.source.icon}").img-responsive
-							span #{item.source.name}
-							span #{item.createdAt}
-						a(href="/detail/#{item.source.code}/#{item.sid}")
-							img.lazy(data-original="#{item.img}", style="width:100%")
-						p.info!= item.info
-						a.btn.btn-default(href="/detail/#{item.source.code}/#{item.sid}") 阅读全文
-				nav.pagination(role="navigation")
-					if(pageable.page > 1)
-						if (source)
-							a(href="/page/#{pageable.page - 1}?source=#{source.code}") <
-						else 
-							a(href="/page/#{pageable.page - 1}") <
-					span.page-number 第 #{pageable.page} 页 / 共 #{pageable.number} 页
-					if(pageable.page < pageable.number)
-						if (source)
-							a(href="/page/#{pageable.page + 1}?source=#{source.code}") >
-						else
-							a(href="/page/#{pageable.page + 1}") >
-			div.col-md-4
-				div.widget
-					p a
-				div.widget
-					p b
-				div.widget
-					p c
+	each item in items.rows
+		div.item
+			a(href="/detail/#{item.source.code}/#{item.sid}")
+				h4!= item.title
+			p.meta
+				img(src="#{item.source.icon}").img-responsive
+				span #{item.source.name}
+				span #{item.createdAt}
+			a(href="/detail/#{item.source.code}/#{item.sid}")
+				img.lazy(data-original="#{item.img}", style="width:100%")
+			p.info!= item.info
+			a.btn.btn-default(href="/detail/#{item.source.code}/#{item.sid}") 阅读全文
+	nav.pagination(role="navigation")
+		if(pageable.page > 1)
+			if (source)
+				a(href="/page/#{pageable.page - 1}?source=#{source.code}") <
+			else 
+				a(href="/page/#{pageable.page - 1}") <
+		span.page-number 第 #{pageable.page} 页 / 共 #{pageable.number} 页
+		if(pageable.page < pageable.number)
+			if (source)
+				a(href="/page/#{pageable.page + 1}?source=#{source.code}") >
+			else
+				a(href="/page/#{pageable.page + 1}") >
+			
